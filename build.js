@@ -16,8 +16,6 @@ const SRC_HTML = path.join(ROOT, 'index.html');
 const GLOBALS_RESERVADOS = [
   'abrirPopup',
   'fecharPopup',
-  'abrirMenuMobile',
-  'fecharMenuMobile',
   'capturarUTMs',
   'obterUTMs',
   'AOS',

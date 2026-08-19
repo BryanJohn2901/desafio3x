@@ -131,7 +131,7 @@
         .hero-mobile {
             position: relative;
             width: 100%;
-            height: calc(100svh - 6.5rem);
+            height: 100svh;
             background-color: #080811;
         }
 
@@ -183,9 +183,8 @@
 
 <body class="bg-brand-bg text-brand-textPrimary font-sans antialiased selection:bg-brand-primary selection:text-white">
 
-    <nav id="navegacao"
-        class="sticky top-0 z-50 px-4 py-3 bg-brand-bg lg:bg-transparent lg:py-0 lg:fixed lg:inset-x-0 lg:top-6"
-        data-aos="fade-down" data-aos-duration="1000">
+    <nav id="navegacao" class="hidden lg:block lg:fixed lg:inset-x-0 lg:top-6 lg:z-50 lg:px-4" data-aos="fade-down"
+        data-aos-duration="1000">
         <div class="container mx-auto max-w-6xl">
             <div
                 class="relative flex items-center justify-between gap-6 lg:gap-10 px-6 md:px-8 py-3 rounded-full glass-strong shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] transition-all duration-300 hover:border-brand-primary/40">
@@ -229,42 +228,13 @@
 
                 <div class="flex items-center gap-2 shrink-0">
                     <button type="button" onclick="abrirPopup()"
-                        class="hidden sm:flex shrink-0 bg-brand-primary hover:bg-brand-primaryHover text-white font-black uppercase py-2.5 px-5 lg:py-5 lg:px-10 rounded-xl transition-all duration-300 shadow-[0_10px_30px_rgba(239,72,45,0.3)] hover:-translate-y-1 items-center justify-center gap-3">
+                        class="shrink-0 bg-brand-primary hover:bg-brand-primaryHover text-white font-black uppercase py-5 px-10 rounded-xl transition-all duration-300 shadow-[0_10px_30px_rgba(239,72,45,0.3)] hover:-translate-y-1 flex items-center justify-center gap-3">
                         Inscreva-se <i class="fas fa-arrow-right"></i>
-                    </button>
-                    <button type="button" id="menu-toggle"
-                        class="lg:hidden w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white"
-                        aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile">
-                        <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
-
-    <div id="menu-mobile" class="lg:hidden fixed inset-0 z-40 hidden" aria-hidden="true">
-        <div class="absolute inset-0 bg-[#05050A]/90 backdrop-blur-xl" data-close-menu></div>
-        <div class="relative mt-24 mx-4 rounded-3xl glass-strong p-6 space-y-2 shadow-2xl">
-            <a href="#problema"
-                class="menu-mobile-link flex items-center justify-between py-3 px-4 rounded-xl text-sm font-bold uppercase text-gray-300 hover:text-white hover:bg-white/5 transition-colors">O
-                Problema <i class="fas fa-chevron-right text-brand-primary text-xs"></i></a>
-            <a href="#cronograma"
-                class="menu-mobile-link flex items-center justify-between py-3 px-4 rounded-xl text-sm font-bold uppercase text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Cronograma
-                <i class="fas fa-chevron-right text-brand-primary text-xs"></i></a>
-            <a href="#especialistas"
-                class="menu-mobile-link flex items-center justify-between py-3 px-4 rounded-xl text-sm font-bold uppercase text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Mentores
-                <i class="fas fa-chevron-right text-brand-primary text-xs"></i></a>
-            <a href="#para-quem"
-                class="menu-mobile-link flex items-center justify-between py-3 px-4 rounded-xl text-sm font-bold uppercase text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Para
-                quem <i class="fas fa-chevron-right text-brand-primary text-xs"></i></a>
-            <a href="#faq"
-                class="menu-mobile-link flex items-center justify-between py-3 px-4 rounded-xl text-sm font-bold uppercase text-gray-300 hover:text-white hover:bg-white/5 transition-colors">FAQ
-                <i class="fas fa-chevron-right text-brand-primary text-xs"></i></a>
-            <button type="button" onclick="fecharMenuMobile(); abrirPopup();"
-                class="mt-4 w-full bg-brand-primary hover:bg-brand-primaryHover text-white font-black uppercase py-5 px-10 rounded-xl transition-all duration-300 shadow-[0_10px_30px_rgba(239,72,45,0.3)] hover:-translate-y-1 flex items-center justify-center gap-3">Quero
-                minha vaga <i class="fas fa-arrow-right"></i></button>
-        </div>
-    </div>
 
     <header id="home" class="relative lg:min-h-[100svh] lg:flex lg:items-center overflow-x-hidden">
         <div class="hero-bg" role="img"
@@ -292,7 +262,7 @@
                     Evento Ao Vivo
                 </div>
 
-                <h1 class="w-full max-w-xl md:max-w-2xl">
+                <h1 class="w-[70%] max-w-[240px] sm:max-w-sm md:max-w-xl lg:max-w-2xl">
                     <img src="img/Desafio 3X.svg" alt="Desafio 3X" class="w-full h-auto mx-auto lg:mx-0" width="709"
                         height="160">
                 </h1>
@@ -797,7 +767,6 @@
 
         const popup = document.getElementById('popup-captura');
         function abrirPopup() {
-            fecharMenuMobile();
             popup.classList.remove('hidden');
             popup.classList.add('flex');
             document.body.style.overflow = 'hidden';
@@ -808,41 +777,11 @@
             document.body.style.overflow = '';
         }
 
-        const menuMobile = document.getElementById('menu-mobile');
-        const menuToggle = document.getElementById('menu-toggle');
-        function abrirMenuMobile() {
-            menuMobile.classList.remove('hidden');
-            menuMobile.setAttribute('aria-hidden', 'false');
-            menuToggle.setAttribute('aria-expanded', 'true');
-            menuToggle.querySelector('i').className = 'fas fa-times';
-            document.body.style.overflow = 'hidden';
-        }
-        function fecharMenuMobile() {
-            if (!menuMobile || menuMobile.classList.contains('hidden')) return;
-            menuMobile.classList.add('hidden');
-            menuMobile.setAttribute('aria-hidden', 'true');
-            if (menuToggle) {
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuToggle.querySelector('i').className = 'fas fa-bars';
-            }
-            if (popup.classList.contains('hidden')) document.body.style.overflow = '';
-        }
-        menuToggle.addEventListener('click', () => {
-            if (menuMobile.classList.contains('hidden')) abrirMenuMobile();
-            else fecharMenuMobile();
-        });
-        menuMobile.querySelector('[data-close-menu]').addEventListener('click', fecharMenuMobile);
-        menuMobile.querySelectorAll('.menu-mobile-link').forEach(link => {
-            link.addEventListener('click', fecharMenuMobile);
-        });
         popup.addEventListener('click', (e) => {
             if (e.target === popup) fecharPopup();
         });
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                fecharPopup();
-                fecharMenuMobile();
-            }
+            if (e.key === 'Escape') fecharPopup();
         });
 
         const telInput = document.getElementById('lead-phone');
