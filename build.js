@@ -67,7 +67,7 @@ function copyDir(src, dest) {
 function transformHtml(html) {
   let out = html;
 
-  out = out.replace(/(src|href)="img\//g, '$1="assets/');
+  out = out.replace(/(src|href|srcset)="img\//g, '$1="assets/');
 
   out = out.replace(/\n?\s*<script src="https:\/\/cdn\.tailwindcss\.com"><\/script>/, '');
   out = out.replace(/\n?\s*<script>\s*tailwind\.config\s*=[\s\S]*?<\/script>/, '');
@@ -137,8 +137,9 @@ async function main() {
   if (cssOut.errors.length) {
     throw new Error(`clean-css: ${cssOut.errors.join('; ')}`);
   }
+  const cssRewritten = cssOut.styles.replace(/url\((['"]?)img\//g, 'url($1../assets/');
   const cssPath = path.join(DIST, 'css', 'style.css');
-  fs.writeFileSync(cssPath, cssOut.styles);
+  fs.writeFileSync(cssPath, cssRewritten);
 
   log('Minificando e ofuscando JavaScript');
   const jsResult = await minifyJs(appJs, {

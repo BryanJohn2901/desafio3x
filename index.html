@@ -123,6 +123,23 @@
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: url('img/Mobile.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-bg {
+                background-image: url('img/Web.webp');
+                background-position: center right;
+            }
+        }
     </style>
 </head>
 
@@ -211,22 +228,15 @@
     </div>
 
     <header id="home" class="relative min-h-[100svh] flex items-center pt-24 pb-16 md:pt-36 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <picture>
-                <source media="(min-width: 1024px)" srcset="img/Web.webp" type="image/webp">
-                <img src="img/Mobile.webp"
-                    alt="Rafael Tonietto, Walter Krause, Carlos Garon e Artur Monteiro, mentores do Desafio 3X"
-                    class="absolute inset-0 w-full h-full object-cover object-center" width="1200" height="1600"
-                    loading="eager" fetchpriority="high">
-            </picture>
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-bg/70 via-brand-bg/40 to-brand-bg lg:hidden">
-            </div>
-            <div
-                class="absolute inset-0 hidden lg:block bg-gradient-to-r from-brand-bg via-brand-bg/80 to-brand-bg/20">
-            </div>
-            <div
-                class="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-b from-transparent to-brand-surface pointer-events-none">
-            </div>
+        <div class="hero-bg" role="img"
+            aria-label="Rafael Tonietto, Walter Krause, Carlos Garon e Artur Monteiro, mentores do Desafio 3X"></div>
+        <div class="absolute inset-0 z-[1] bg-gradient-to-b from-brand-bg/55 via-brand-bg/25 to-brand-bg/80 lg:hidden">
+        </div>
+        <div
+            class="absolute inset-0 z-[1] hidden lg:block bg-gradient-to-r from-brand-bg via-brand-bg/45 to-transparent">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 right-0 z-[1] h-56 bg-gradient-to-b from-transparent to-brand-surface pointer-events-none">
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
