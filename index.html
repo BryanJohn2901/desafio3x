@@ -125,19 +125,40 @@
         }
 
         .hero-bg {
+            display: none;
+        }
+
+        .hero-mobile {
+            position: relative;
+            width: 100%;
+            height: 100svh;
+            background-color: #080811;
+        }
+
+        .hero-mobile img {
             position: absolute;
             inset: 0;
-            z-index: 0;
-            background-image: url('img/Mobile.webp');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            max-width: none;
         }
 
         @media (min-width: 1024px) {
+            .hero-mobile {
+                display: none;
+            }
+
             .hero-bg {
+                display: block;
+                position: absolute;
+                inset: 0;
+                z-index: 0;
                 background-image: url('img/Web.webp');
+                background-size: cover;
                 background-position: center right;
+                background-repeat: no-repeat;
             }
         }
     </style>
@@ -227,20 +248,25 @@
         </div>
     </div>
 
-    <header id="home" class="relative min-h-[100svh] flex items-center pt-24 pb-16 md:pt-36 overflow-hidden">
+    <header id="home" class="relative lg:min-h-[100svh] lg:flex lg:items-center overflow-x-hidden">
         <div class="hero-bg" role="img"
             aria-label="Rafael Tonietto, Walter Krause, Carlos Garon e Artur Monteiro, mentores do Desafio 3X"></div>
-        <div class="absolute inset-0 z-[1] bg-gradient-to-b from-brand-bg/55 via-brand-bg/25 to-brand-bg/80 lg:hidden">
-        </div>
         <div
             class="absolute inset-0 z-[1] hidden lg:block bg-gradient-to-r from-brand-bg via-brand-bg/45 to-transparent">
         </div>
         <div
-            class="absolute bottom-0 left-0 right-0 z-[1] h-56 bg-gradient-to-b from-transparent to-brand-surface pointer-events-none">
+            class="absolute bottom-0 left-0 right-0 z-[1] hidden lg:block h-56 bg-gradient-to-b from-transparent to-brand-surface pointer-events-none">
         </div>
 
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-2xl lg:max-w-3xl flex flex-col items-start text-left space-y-8" data-aos="fade-right">
+        <div class="hero-mobile">
+            <img src="img/Mobile.webp"
+                alt="Rafael Tonietto, Walter Krause, Carlos Garon e Artur Monteiro, mentores do Desafio 3X"
+                width="1080" height="1920" loading="eager" fetchpriority="high">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 py-16 lg:py-0">
+            <div class="max-w-2xl lg:max-w-3xl mx-auto lg:mx-0 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8"
+                data-aos="fade-right">
 
                 <div
                     class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase backdrop-blur-sm">
@@ -249,7 +275,8 @@
                 </div>
 
                 <h1 class="w-full max-w-xl md:max-w-2xl">
-                    <img src="img/Desafio 3X.svg" alt="Desafio 3X" class="w-full h-auto" width="709" height="160">
+                    <img src="img/Desafio 3X.svg" alt="Desafio 3X" class="w-full h-auto mx-auto lg:mx-0" width="709"
+                        height="160">
                 </h1>
 
                 <p class="text-2xl font-bold text-white max-w-3xl leading-relaxed">
@@ -262,13 +289,13 @@
                 </p>
 
                 <div
-                    class="flex flex-col sm:flex-row items-center gap-4 bg-[#14151e]/80 border border-white/5 backdrop-blur-md p-4 rounded-2xl w-full sm:w-auto shadow-xl">
+                    class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 bg-[#14151e]/80 border border-white/5 backdrop-blur-md p-4 rounded-2xl w-full sm:w-auto shadow-xl">
                     <div class="group flex items-center gap-4 pr-6 sm:border-r border-white/5 cursor-default">
                         <div
                             class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-primary text-xl transition-all duration-300 group-hover:bg-brand-primary group-hover:text-white">
                             <i class="fas fa-calendar-alt"></i>
                         </div>
-                        <div>
+                        <div class="text-left">
                             <div class="text-[10px] text-brand-textMuted uppercase font-bold mb-0.5">Datas Oficiais
                             </div>
                             <div class="text-white font-bold text-sm">31 de agosto, 1 e 2 de setembro</div>
@@ -279,14 +306,14 @@
                             class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-primary text-xl transition-all duration-300 group-hover:bg-brand-primary group-hover:text-white">
                             <i class="fas fa-clock"></i>
                         </div>
-                        <div>
+                        <div class="text-left">
                             <div class="text-[10px] text-brand-textMuted uppercase font-bold mb-0.5">Horário</div>
                             <div class="text-white font-bold text-sm">às 20h30</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="pt-4 w-full sm:w-auto">
+                <div class="pt-4 w-full sm:w-auto flex justify-center lg:justify-start">
                     <button onclick="abrirPopup()"
                         class="w-full sm:w-auto bg-brand-primary hover:bg-brand-primaryHover text-white font-black uppercase py-5 px-10 rounded-xl transition-all duration-300 shadow-[0_10px_30px_rgba(239,72,45,0.3)] hover:-translate-y-1 flex items-center justify-center gap-3">
                         Quero garantir minha vaga no Desafio 3x <i class="fas fa-arrow-right"></i>
