@@ -17,7 +17,8 @@ const GLOBALS_RESERVADOS = [
   'abrirPopup',
   'fecharPopup',
   'capturarUTMs',
-  'obterUTMs',
+  'valorCampo',
+  'montarQueryRedirect',
   'AOS',
   'pulseq',
 ];
