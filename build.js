@@ -19,6 +19,7 @@ const GLOBALS_RESERVADOS = [
   'capturarUTMs',
   'obterUTMs',
   'AOS',
+  'pulseq',
 ];
 
 function log(msg) {
@@ -46,7 +47,7 @@ function extractInlineStyle(html) {
 
 function extractAppScript(html) {
   const matches = [...html.matchAll(/<script(?![^>]*\bsrc=)([^>]*)>([\s\S]*?)<\/script>/gi)];
-  const app = matches.find((m) => !m[2].includes('tailwind.config'));
+  const app = matches.find((m) => m[2].includes('AOS.init') || m[2].includes('form-desafio3x'));
   if (!app) throw new Error('Script da aplicação não encontrado em index.html');
   return app[2].trim();
 }
